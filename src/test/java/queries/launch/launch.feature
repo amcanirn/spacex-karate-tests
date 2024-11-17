@@ -9,6 +9,7 @@ Feature: Validate SpaceX GraphQL API
   # Import the custom JavaScript time validator
   * def isValidTime = read('file:src/test/java/lib/time-validator.js')
 
+  @performance
   Scenario: Validate past launches GraphQL response
     Given text query =
     """

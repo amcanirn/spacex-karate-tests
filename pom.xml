@@ -21,6 +21,11 @@
             <artifactId>karate-junit5</artifactId>
             <version>${karate.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.karatelabs</groupId>
+            <artifactId>karate-gatling</artifactId>
+            <version>${karate.version}</version>
         </dependency>		
     </dependencies>
 
@@ -34,6 +39,24 @@
             </testResource>
         </testResources>
         <plugins>
+            <plugin>
+                <groupId>io.gatling</groupId>
+                <artifactId>gatling-maven-plugin</artifactId>
+                <version>4.3.4</version>
+                <configuration>
+                    <disableCompiler>true</disableCompiler>
+                    <skip>${skipTests}</skip>
+                    <runMultipleSimulations>true</runMultipleSimulations>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>test</goal>
+                        </goals>
+                    </execution>
+                </executions>                
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
