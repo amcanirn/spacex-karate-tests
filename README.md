@@ -26,17 +26,12 @@ Ensure the following are installed on your system:
 
 2. Install dependencies, build the project and run the tests:
    ```bash
-   mvn clean install
+   mvn clean test
    ```
 
-3. Running tests:
+3. Execute the Gatling tests:
    ```bash
-   mvn test
-   ```
-
-4. Execute the Gatling tests:
-   ```bash
-   mvn gatling:test
+   mvn clean test -P performance
    ```
 
 ## Project Structure
