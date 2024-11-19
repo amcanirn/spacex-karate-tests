@@ -12,12 +12,17 @@ public class GatlingSimulation extends Simulation {
 
   KarateProtocolBuilder protocol = karateProtocol();
 
-  ScenarioBuilder launchScenario = scenario("launch")
-      .exec(karateFeature("classpath:queries/launch/launch.feature", "@performance"));
+  ScenarioBuilder smokeTest = scenario("smoke")
+      .exec(karateFeature("classpath:queries/launch/launch.feature", "@performance"))
+      .pause(5,10)
+      .exec(karateFeature("classpath:queries/rocket/rocket.feature", "@performance"));
 
   {
     setUp(
-        launchScenario.injectOpen(constantUsersPerSec(1).during(5))).protocols(protocol)
+        smokeTest.injectOpen(
+          nothingFor(2),
+          constantUsersPerSec(2).during(15))
+        ).protocols(protocol)
         .assertions(
             global().responseTime().mean().lt(1200),
             global().failedRequests().percent().is(0.0));

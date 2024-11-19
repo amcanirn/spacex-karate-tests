@@ -7,7 +7,7 @@ Feature: Validate SpaceX GraphQL API
   * url 'https://spacex-production.up.railway.app/'
 
   # Import the custom JavaScript time validator
-  * def isValidTime = read('file:src/test/java/lib/time-validator.js')
+  * def isValidTime = read('file:src/test/resources/lib/time-validator.js')
 
   @performance
   Scenario: Validate past launches GraphQL response

@@ -1,0 +1,13 @@
+{
+  rockets {
+    id
+    name
+    description
+    height {
+      feet
+    }
+    cost_per_launch
+    company
+    first_flight
+  }
+}
