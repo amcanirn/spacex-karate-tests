@@ -17,12 +17,3 @@ jobs:
         java-version: '17'
         cache: 'maven'
         cache-dependency-path: '**/pom.xml'
-
-    - name: Publish Test Results
-      uses: EnricoMi/publish-unit-test-result-action/composite@v2
-      if: always()
-      with:
-        files: |
-          target/surefire-reports/*.xml
-          target/karate-reports/karate-summary.html
-        comment_title: Test Results for Karate Tests
