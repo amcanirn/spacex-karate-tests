@@ -1,0 +1,43 @@
+{
+  "active": "#boolean",
+  "crew_capacity": "#number",
+  "description": "#string",
+  "diameter": { "meters": "#number", "feet": "#number" },
+  "dry_mass_kg": "#number",
+  "dry_mass_lb": "#number",
+  "first_flight": "#string",
+  "heat_shield": {
+    "dev_partner": "#string",
+    "material": "#string",
+    "size_meters": "#number",
+    "temp_degrees": "#number"
+  },
+  "height_w_trunk": { "feet": "#number", "meters": "#number" },
+  "id": "#regex [a-f0-9]+",
+  "launch_payload_mass": { "kg": "#number", "lb": "#number" },
+  "launch_payload_vol": { "cubic_feet": "#number", "cubic_meters": "#number" },
+  "name": "#string",
+  "orbit_duration_yr": "#number",
+  "pressurized_capsule": {
+    "payload_volume": { "cubic_feet": "#number", "cubic_meters": "#number" }
+  },
+  "return_payload_mass": { "kg": "#number", "lb": "#number" },
+  "return_payload_vol": { "cubic_feet": "#number", "cubic_meters": "#number" },
+  "sidewall_angle_deg": "#number",
+  "thrusters": [
+    {
+      "amount": "#number",
+      "fuel_1": "#string",
+      "fuel_2": "#string",
+      "pods": "#number",
+      "thrust": { "kN": "#number", "lbf": "#number" },
+      "type": "#string"
+    }
+  ],
+  "trunk": {
+    "cargo": { "solar_array": "#number", "unpressurized_cargo": "#boolean" },
+    "trunk_volume": { "cubic_feet": "#number", "cubic_meters": "#number" }
+  },
+  "type": "#string",
+  "wikipedia": "#string"
+}

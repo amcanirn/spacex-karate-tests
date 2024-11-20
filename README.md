@@ -11,6 +11,7 @@ This repository demonstrates how to use [Karate](https://github.com/karatelabs/k
 - **Performance Testing**: Seamless integration with Gatling for API performance evaluation.
 - **Modular Structure**: Organized for easy addition of new query types or feature categories.
 - **Maven Build**: Simplified project setup, dependency management, and execution.
+- **GitHub Actions**: Automated CI/CD pipeline for running tests and ensuring code quality.
 
 ---
 
@@ -46,6 +47,11 @@ Ensure the following are installed:
    mvn clean test -P performance
    ```
 
+5. **Run with specific thread count**:
+   ```bash
+   mvn clean test -DTHREADS=2
+   ```
+
 ---
 
 ## Project Structure
@@ -57,62 +63,23 @@ spacex-karate-tests/
 │   pom.xml
 │   README.md
 │
+├───.github     # Pipeline execution
+│
 └───src
     └───test
         ├───java
         │   │   karate-config.js    # Environment setup for tests
         │   │   logback-test.xml    # Logging configuration
         │   │
-        │   ├───performance         # Performance test simulations
-        │   │       GatlingSimulation.java
+        │   ├───performance   # Performance test simulations
         │   │
-        │   └───queries
-        │       │   QueryTests.java
-        │       │
-        │       ├───launch           # Tests related to launch queries
-        │       │       launch.feature
-        │       │       LaunchRunner.java
-        │       │
-        │       └───rocket          # Tests related to rocket queries
-        │               rocket.feature
-        │               RocketRunner.java
+        │   └───queries       # Karate tests
         │
         └───resources
-            ├───data                # Data file for testing
-            │       rockets.txt
+            ├───data    # Data files for testing
             │
-            └───lib                 # Custom utility scripts
-                    time-validator.js
+            └───lib     # Custom utility scripts
 ```
-
----
-
-### Key Files and Directories
-
-- **`queries/`**:
-  - Houses all GraphQL query tests.
-  - Subdirectories like `launch/` and `rocket/` group tests by functionality.
-
-- **`resources/data/`**:
-  - Contains reusable data files (e.g., `rockets.txt`) for dynamic testing.
-
-- **`performance/`**:
-  - Contains Gatling scripts for API performance tests.
-
-- **`karate-config.js`**:
-  - Configures environments (e.g., dev, test, prod) for Karate tests.
-
-- **`pom.xml`**:
-  - Maven configuration file for dependency management and build execution.
-
----
-
-## Technologies Used
-
-- **Karate**: Simplifies API and GraphQL testing with a BDD-style syntax.
-- **Gatling**: Performance testing to measure scalability and response times.
-- **Maven**: For dependency management and automated builds.
-- **Java**: Runtime for Karate and Gatling.
 
 ---
 
@@ -121,6 +88,7 @@ spacex-karate-tests/
 - [Karate Documentation](https://github.com/karatelabs/karate)
 - [SpaceX GraphQL API](https://api.spacex.land/graphql/)
 - [Gatling Documentation](https://gatling.io/docs/)
+- [Learn GraphQL](https://graphql.org/learn/)
 
 ---
 

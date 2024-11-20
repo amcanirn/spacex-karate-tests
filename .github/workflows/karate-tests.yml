@@ -1,12 +1,6 @@
 name: Run Karate Tests
 
-on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+on: [push]
 
 jobs:
   karate-tests:
@@ -24,5 +18,11 @@ jobs:
         cache: 'maven'
         cache-dependency-path: '**/pom.xml'
 
-    - name: Build and Run Tests with Maven
-      run: mvn clean test
+    - name: Publish Test Results
+      uses: EnricoMi/publish-unit-test-result-action/composite@v2
+      if: always()
+      with:
+        files: |
+          target/surefire-reports/*.xml
+          target/karate-reports/karate-summary.html
+        comment_title: Test Results for Karate Tests

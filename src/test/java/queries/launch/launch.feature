@@ -1,5 +1,5 @@
 Feature: Validate SpaceX GraphQL API
-  This feature tests the SpaceX GraphQL API for retrieving past launches. 
+  This feature tests the SpaceX GraphQL API for retrieving past **launch**. 
   It validates the response structure, field types, and data correctness.
 
   Background:
@@ -9,40 +9,8 @@ Feature: Validate SpaceX GraphQL API
   # Import the custom JavaScript time validator
   * def isValidTime = read('file:src/test/resources/lib/time-validator.js')
 
-  @performance
-  Scenario: Validate past launches GraphQL response
-    Given text query =
-    """
-    {
-        launchesPast(limit: 5) {
-          mission_name
-          launch_date_utc
-          rocket {
-            rocket_name
-          }
-        }
-    }
-    """
-    And request { query: '#(query)' }
-    When method post
-    Then status 200
-
-    # Validate the launchesPast array has exactly 5 elements
-    * match response.data.launchesPast == '#[5]'
-
-    # Validate each launch has correct field types and valid time format
-    * match each response.data.launchesPast == 
-    """
-      {
-        "mission_name": "#string",
-        "launch_date_utc": "#? isValidTime(_)",
-        "rocket": {
-          "rocket_name": "#string"
-        }
-      }
-    """
-
-  Scenario Outline: Validate past launches GraphQL response using data-driven approach
+  Scenario Outline: Validate past launch GraphQL response
+    # Data-Driven
     Given text query =
     """
       query ($id: ID!){
@@ -85,7 +53,8 @@ Feature: Validate SpaceX GraphQL API
       | 62a9f89a20413d2695d8871a  |
       | 62dd70d5202306255024d139  |
 
-  Scenario: Validate past launches GraphQL response for negative scenarios
+  Scenario: Validate past launches GraphQL response for negative scenario
+    # Invalid ID
     Given text query =
     """
       query ($id: ID!){

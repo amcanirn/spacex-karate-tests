@@ -1,5 +1,5 @@
 Feature: Validate SpaceX GraphQL API
-  This feature tests the SpaceX GraphQL API for retrieving rocket details 
+  This feature tests the SpaceX GraphQL API for retrieving **rockets** details 
   It validates the response structure, field types, and data correctness.
 
   Background:
@@ -7,8 +7,8 @@ Feature: Validate SpaceX GraphQL API
   * url 'https://spacex-production.up.railway.app/'
 
   @performance
-  Scenario: Validate Rocket Details
-    * def query = read('file:src/test/resources/data/rockets.txt')
+  Scenario: Validate Rockets Fields
+    * def query = read('file:src/test/resources/data/rocketsQuery.txt')
     And request { query: '#(query)' }
     When method post
     Then status 200
